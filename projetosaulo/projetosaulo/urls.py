@@ -23,9 +23,10 @@ from blog import views
 urlpatterns = [
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('admin/', admin.site.urls),
-    path('',views.home),
-    path('posts/<int:post_id>', views.post),
+    path('',views.home, name='home'),
     path('create/', views.create_post, name='create_post'),
+    path("accounts/", include("django.contrib.auth.urls")),
+    path('register/', include('accounts.urls'))
  
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
