@@ -9,7 +9,7 @@ def post_detail(request, pk):
     return render(request, 'post_detail.html', {'post': post})
 
 def home(request):
-    posts = Post.objects.all()
+    posts = Post.objects.all().order_by('-created_at')
     return render(request, 'home.html', {'posts': posts})
 
 def post(request, post_id):

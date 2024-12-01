@@ -4,7 +4,9 @@
   <h1>Criar nova postagem</h1>
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %} {{ form.as_p }}
-    <button type="submit">Criar postagem</button>
+    <button type="submit" class="btn-createPost">Criar postagem</button>
   </form>
+
+  <a href="/" class="link-voltar"><- Voltar</a>
 </div>
 {% endblock %}
