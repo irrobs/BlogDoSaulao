@@ -8,6 +8,8 @@ Feito por Matheus: Criação de accounts e todo o processo de criação de conta
 
 Para utilizar o app:
 
-  1: crie uma pasta, abra ela no vscode, abra um terminal no vsco e faça o comando git clone https://github.com/irrobs/DjangoNews.git
-  2: após isso rode o comando cd DjangoNews/projetosaulo/
+  1: crie uma pasta, abra ela no vscode, abra um terminal no vsco e faça o comando git clone https://github.com/irrobs/DjangoNews.git 
+  
+  2: após isso rode o comando cd DjangoNews/projetosaulo/ 
+  
   3: por fim rode python manage.py runserver python manage.py runserver e clique no link fornecido
