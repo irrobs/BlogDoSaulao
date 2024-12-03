@@ -27,22 +27,28 @@
       style="width: 100%; height: auto"
     />
     {% endif %}
+    <div class="upvote">
+      <a href="{% url 'post_like' post.id %}">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="32"
+          height="32"
+          fill="#000000"
+          viewBox="0 0 256 256"
+          class="upvote-button"
+        >
+          <path
+            d="M229.66,114.34l-96-96a8,8,0,0,0-11.32,0l-96,96A8,8,0,0,0,32,128H72v80a16,16,0,0,0,16,16h80a16,16,0,0,0,16-16V128h40a8,8,0,0,0,5.66-13.66ZM176,112a8,8,0,0,0-8,8v88H88V120a8,8,0,0,0-8-8H51.31L128,35.31,204.69,112Z"
+          ></path>
+        </svg>
+      </a>
+      <span class="upvote-count">{{ post.number_of_likes }}</span>
+    </div>
   </div>
   {% endfor %}
   <a href="{% url 'create_post' %}" class="link-createPost"
     >Criar nova postagem</a
   >
-  <div class="d-flex gap-3 align-items-center">
-    {% if user.is_authenticated %}
-    <span class="nav-text"> {{user.username}} </span>
-    <form method="post" action="{% url 'logout' %}" style="display: inline">
-      {% csrf_token %}
-      <button type="submit" class="btn btn-outline-danger">Sair</button>
-    </form>
-    {% else %}
-    <a class="btn btn-outline-primary" href="{% url 'login' %}">Entrar</a>
-    <a class="btn btn-success" href="{% url 'register' %}">Registrar</a>
-    {% endif %}
-  </div>
 </div>
-{% endblock %}
+
+{% endblock%}

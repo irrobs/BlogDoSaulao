@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404,redirect
 from .forms import PostForm
 
+from .models import Post
+
 # Create your views here.
 from blog.models import Post
 
@@ -28,3 +30,16 @@ def create_post(request):
         form = PostForm()
 
     return render(request, 'create_post.html', {'form': form})
+
+def post_like(request,pk):
+    if request.user.is_authenticated:
+        post = get_object_or_404(Post,id=pk)
+        if post.likes.filter(id=request.user.id):
+            post.likes.remove(request.user)
+        else:
+            post.likes.add(request.user)
+
+        return redirect('home')
+    
+    else:
+        return

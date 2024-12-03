@@ -18,6 +18,10 @@
       href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900"
       rel="stylesheet"
     />
+
+  </head>
+  
+    <title>Django News</title>
     <style type="text/css">
       body {
         margin-bottom: 20px;
@@ -129,12 +133,14 @@
 
       .blog-post {
         margin-bottom: 4rem;
+        position: relative;
       }
 
       .blog-post-title {
         margin-bottom: 0.25rem;
         font-size: 2.5rem;
         color: #000;
+        padding-right: 20px;
       }
 
       .blog-post-meta {
@@ -210,6 +216,20 @@
       .link-voltar:hover {
         color: #2a2e33;
       }
+      .upvote {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-weight: bold;
+      }
+
+      .upvote-button {
+        cursor: pointer;
+
+      }
     </style>
   </head>
 
@@ -218,19 +238,36 @@
       <header class="blog-header py-3">
         <div class="row flex-nowrap justify-content-between align-items-center">
           <div class="col-4 pt-1">
+            
             <div class="text-muted">
               João Victor Donadio e Matheus H. Escobar Borri
             </div>
           </div>
           <div class="col-4 text-center">
-            <div class="blog-header-logo text-dark">Blog do Saulão</div>
+            <div class="blog-header-logo text-dark">Django news</div>
           </div>
           <div class="col-4 d-flex justify-content-end align-items-center">
-            <div
-              class="btn btn-sm btn-outline-secondary"
-              onclick="window.location.href='https://www.unicep.edu.br/'"
-            >
-              Centro Universitário Central Paulista
+            <div class="d-flex gap-3 align-items-center">
+              {% if user.is_authenticated %}
+              <span class="nav-text mr-2"> {{user.username}} </span>
+              <form
+                method="post"
+                action="{% url 'logout' %}"
+                style="display: inline"
+              >
+                {% csrf_token %}
+                <button type="submit" class="btn btn-outline-danger">
+                  Sair
+                </button>
+              </form>
+              {% else %}
+              <a class="btn btn-outline-primary mr-2" href="{% url 'login' %}"
+                >Entrar</a
+              >
+              <a class="btn btn-success" href="{% url 'register' %}"
+                >Registrar</a
+              >
+              {% endif %}
             </div>
           </div>
         </div>
@@ -250,6 +287,13 @@
               Este blog foi feito para a disciplina de desenvolvimento de
               sistemas web através do framework Django.
             </p>
+            <a
+              class="btn btn-sm btn-outline-secondary mt-3"
+              href="https://www.unicep.edu.br/"
+              target="_blank"
+            >
+              Centro Universitário Central Paulista
+            </a>
           </div>
         </aside>
       </div>

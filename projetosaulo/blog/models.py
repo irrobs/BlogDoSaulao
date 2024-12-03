@@ -12,6 +12,11 @@ class Post(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(auto_now=True)
     image = models.ImageField(upload_to='post_images/', blank=True, null=True)
+    likes= models.ManyToManyField(User, related_name="post_like", blank=True)
+
+    # Keep track of like cont
+    def number_of_likes(self):
+        return self.likes.count()
 
     def __str__(self):
         return self.title

@@ -26,7 +26,8 @@ urlpatterns = [
     path('',views.home, name='home'),
     path('create/', views.create_post, name='create_post'),
     path("accounts/", include("django.contrib.auth.urls")),
-    path('register/', include('accounts.urls'))
+    path('register/', include('accounts.urls')),
+    path('post_like/<int:pk>', views.post_like, name='post_like')
  
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
