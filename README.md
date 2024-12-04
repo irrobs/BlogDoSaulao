@@ -13,3 +13,7 @@ Para utilizar o app:
   2: Após isso rode o comando cd DjangoNews/projetosaulo/ 
   
   3: Por fim rode python manage.py runserver e clique no link fornecido
+
+Caso você baixe o arquivo e ele diz que o RAR contém vírus, apenas desative a proteção em tempo real, baixe o rar, adicione ele na lista de exclusão, e ative novamente a proteção.
+
+O arquivo não contém vírus!
